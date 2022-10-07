@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const port = 3000;
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const routesUrls = require('./routes/routes');
@@ -10,6 +9,7 @@ const orderRoute = require('./routes/order');
 const dataorderRoute = require('./routes/order-data');
 const tracingRoute = require('./routes/tracingData');
 const cors = require('cors');
+const PORT = process.env.PORT;
 app.use(express.urlencoded({extended: false}));
 
 dotenv.config();
@@ -24,4 +24,4 @@ app.use('/app', getdata);
 app.use('/app', orderRoute);
 app.use('/app', dataorderRoute);
 app.use('/app', tracingRoute);
-app.listen(port, () => console.log(`InstaYa app listening on port ${port}!`));
+app.listen(PORT, () => console.log(`InstaYa app listening on port ${PORT}!`));
